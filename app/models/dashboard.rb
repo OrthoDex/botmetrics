@@ -16,6 +16,8 @@ class Dashboard < ActiveRecord::Base
 
   belongs_to :bot
   belongs_to :user
+  belongs_to :query
+
   has_many :dashboard_events
   has_many :events, through: :dashboard_events
 

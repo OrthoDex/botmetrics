@@ -12,6 +12,7 @@ RSpec.describe Query do
 
   context 'associations' do
     it { is_expected.to belong_to :query_set }
+    it { is_expected.to have_one :dashboard }
   end
 
   context 'validations' do

@@ -4,6 +4,8 @@ RSpec.describe Dashboard, type: :model do
   describe 'validations' do
     subject { create :dashboard }
 
+    it { should belong_to :query }
+
     it { should validate_presence_of :name }
     it { should validate_presence_of :bot_id }
     it { should validate_presence_of :user_id }

@@ -240,6 +240,7 @@ CREATE TABLE dashboards (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     dashboard_type character varying NOT NULL,
+    query_id integer,
     CONSTRAINT regex_not_null_when_dashboard_type_custom CHECK (((((dashboard_type)::text = 'custom'::text) AND ((regex IS NOT NULL) AND ((regex)::text <> ''::text))) OR ((dashboard_type)::text <> 'custom'::text))),
     CONSTRAINT valid_dashboard_type_on_dashboards CHECK (((((((provider)::text = 'slack'::text) AND ((((((((dashboard_type)::text = 'bots-installed'::text) OR ((dashboard_type)::text = 'bots-uninstalled'::text)) OR ((dashboard_type)::text = 'new-users'::text)) OR ((dashboard_type)::text = 'messages'::text)) OR ((dashboard_type)::text = 'messages-to-bot'::text)) OR ((dashboard_type)::text = 'messages-from-bot'::text)) OR ((dashboard_type)::text = 'custom'::text))) OR (((provider)::text = 'facebook'::text) AND ((((((((((((dashboard_type)::text = 'new-users'::text) OR ((dashboard_type)::text = 'messages-to-bot'::text)) OR ((dashboard_type)::text = 'messages-from-bot'::text)) OR ((dashboard_type)::text = 'user-actions'::text)) OR ((dashboard_type)::text = 'get-started'::text)) OR ((dashboard_type)::text = 'image-uploaded'::text)) OR ((dashboard_type)::text = 'audio-uploaded'::text)) OR ((dashboard_type)::text = 'video-uploaded'::text)) OR ((dashboard_type)::text = 'file-uploaded'::text)) OR ((dashboard_type)::text = 'location-sent'::text)) OR ((dashboard_type)::text = 'custom'::text)))) OR (((provider)::text = 'kik'::text) AND (((((((((((dashboard_type)::text = 'new-users'::text) OR ((dashboard_type)::text = 'messages-to-bot'::text)) OR ((dashboard_type)::text = 'messages-from-bot'::text)) OR ((dashboard_type)::text = 'image-uploaded'::text)) OR ((dashboard_type)::text = 'link-uploaded'::text)) OR ((dashboard_type)::text = 'video-uploaded'::text)) OR ((dashboard_type)::text = 'scanned-data'::text)) OR ((dashboard_type)::text = 'sticker-uploaded'::text)) OR ((dashboard_type)::text = 'friend-picker-chosen'::text)) OR ((dashboard_type)::text = 'custom'::text)))) OR ((provider)::text = 'telegram'::text))),
     CONSTRAINT valid_provider_on_dashboards CHECK ((((((provider)::text = 'slack'::text) OR ((provider)::text = 'kik'::text)) OR ((provider)::text = 'facebook'::text)) OR ((provider)::text = 'telegram'::text)))
@@ -1066,6 +1067,14 @@ ALTER TABLE ONLY webhook_events
 
 
 --
+-- Name: fk_rails_54524c45a8; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY dashboards
+    ADD CONSTRAINT fk_rails_54524c45a8 FOREIGN KEY (query_id) REFERENCES queries(id);
+
+
+--
 -- Name: fk_rails_6897853d8c; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1358,4 +1367,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160906040717');
 INSERT INTO schema_migrations (version) VALUES ('20160919061700');
 
 INSERT INTO schema_migrations (version) VALUES ('20160919065157');
+
+INSERT INTO schema_migrations (version) VALUES ('20161004211742');
 

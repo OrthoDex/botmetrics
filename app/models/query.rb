@@ -15,6 +15,8 @@ class Query < ActiveRecord::Base
   delegate :fields, :string_methods, :number_methods, :datetime_methods,
            to: :query_source
 
+  has_one :dashboard
+
   def query_source
     @_query_source ||= Queries::Finder.for_type(provider)
   end
