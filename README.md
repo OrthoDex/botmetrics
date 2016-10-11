@@ -9,6 +9,7 @@ support for other messaging platforms coming soon.
 [![CircleCI](https://circleci.com/gh/botmetrics/botmetrics/tree/master.svg?style=svg)](https://circleci.com/gh/botmetrics/botmetrics/tree/master)
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/botmetrics/botmetrics)
+
 [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/?repository=https://github.com/botmetrics/botmetrics)
 
 ## Analytics
@@ -38,11 +39,13 @@ re-engagement notifications based on pre-selected criteria.
 
 ## Quick Installation
 
-You can deploy Botmetrics with one click to your Heroku account.
+You can deploy Botmetrics with one click to your Heroku or MS Azure account.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/botmetrics/botmetrics)
 
-One-click deployment to Amazon AWS, Google Cloud and Microsoft Azure is
+[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/?repository=https://github.com/botmetrics/botmetrics)
+
+One-click deployment to Amazon AWS and Google Cloud is
 coming soon!
 
 ## Updating your Heroku installation
